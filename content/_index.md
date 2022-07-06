@@ -1,5 +1,5 @@
 ---
-title: "Genesys Workshop"
+title: "Introduction to Data Actions"
 chapter: true
 weight: 1
 ---
