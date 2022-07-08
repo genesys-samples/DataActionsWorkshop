@@ -1,5 +1,5 @@
 ---
-title: "First Lesson"
+title: "Basic Definitions"
 chapter: false
 weight: 10
 ---
