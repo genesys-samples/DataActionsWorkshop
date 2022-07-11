@@ -5,21 +5,25 @@ weight: 20
 ---
 
 ## Understand JSON Paths
-JSON responses are series of objects and arrays in a hierarchical structure. You start with a base object, the example the base object will be a store. The example store sells an array of different foods and silverware. If we run a query against the stores inventory we will recieve a response containing all of the objects that the store sells and any attributes associated to these objects, such as their category (fruits, vegetables etc.) and price.
+JSON responses are series of objects and arrays in a hierarchical structure. You start with a base object, in the below example the base object will be a store. The example store sells an array of different foods and silverware. If we run a query against the stores inventory we will recieve a response containing all of the objects that the store sells and any attributes associated to these objects, such as their category (fruits, vegetables etc.) and price.
 
 ![image](/images/storeexample.PNG)
 
 Now what if we only care about what fruits the store sells? or we're budget shopping and only want to see what the store has for under $2.00? Defining a JSON Path against the response will allow us to isolate only the items that we're concerned about.
 
-An example of a JSON Path to find all of food the store offers would look like - $.Thestore.food[*]
+An example of a JSON Path to find all of food the store offers would look like - 
+```
+$.Thestore.food[*]
+```
+**'$'** - Says to start at the root object of "Thestore"
+**'.food'** - Says to step into the next object or array within the store of "food"
+**'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to '[0]' to return only the first object within this array
 
-'$' - Says to start at the root object of "Thestore"
-'.food' - Says to step into the next object or array within the store of "food"
-'[*]' - is an array position notation, stating to return all objects within the food array, this could be changed to '[0]' to return only the first object within this array
-
-An example of a path that only returns objects that are under $2.50 - $.Thestore.food[?(@.price<2.50)]
-
-The only difference here is we are no longer defining an array position and have now applied a filter ' [?(@.price<2.50)] ' that looks at the price key and filters for only objects that are less than 2.50
+An example of a path that only returns objects that are under $2.50 - 
+```
+$.Thestore.food[?(@.price<2.50)]
+```
+The only difference here is we are no longer defining an array position and have now applied a filter **' [?(@.price<2.50)] '** that looks at the price key and filters for only objects that are less than 2.50
 
 ## Parsing the Response Body
 
