@@ -12,9 +12,9 @@ weight: 10
 
 In this workshop, you will learn...
 
-> This workshop is focused on things one, two and three.
+How to define data actions, understand data action components, construct a data action and troubleshoot failed requests.
 
 ### Learning Objectives
-- Master this
-- Configure that
+- Define and understand Data Action Structures
+- Utilize
 - Integrate this
