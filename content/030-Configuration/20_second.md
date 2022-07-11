@@ -19,7 +19,7 @@ An example of a JSON Path to find all of food the store offers would look like -
 
 An example of a path that only returns objects that are under $2.50 - $.Thestore.food[?(@.price<2.50)]
 
-The only difference here is we are no longer defining an array position and have now applied a filter ' [?(@.price<2.50)] ' that looks a the price key and filters for only objects that are less than 2.50
+The only difference here is we are no longer defining an array position and have now applied a filter ' [?(@.price<2.50)] ' that looks at the price key and filters for only objects that are less than 2.50
 
 ## Parsing the Response Body
 
@@ -52,3 +52,4 @@ Now that we have our path, it's important to visualize the data and filter or ex
 
 The response here shows a single offline status, however; we know that there are multiple users and we need the presence information for all of them. The path we are using has an array position of "[0]", meaning it's only returning the presence of the first entity, or user, within the response. By changing this to a wildcard - "[*]", we can return the presence information for all users.
 
+![image](/images/Jsonpath2.PNG)
