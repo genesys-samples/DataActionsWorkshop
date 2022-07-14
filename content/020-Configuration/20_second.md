@@ -15,29 +15,29 @@ An example of a JSON Path to find all of food the store offers would look like -
 ```
 $.Thestore.food[*]
 ```
-**'$'** - Says to start at the root object of "Thestore"
-**'.food'** - Says to step into the next object or array within the store of "food"
-**'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to '[0]' to return only the first object within this array
+**'$'** - Says to start at the root object of "Thestore".
+**'.food'** - Says to step into the next object or array within the store of "food".
+**'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to '[0]' to return only the first object within this array.
 
 An example of a path that only returns objects that are under $2.50 - 
 ```
 $.Thestore.food[?(@.price<2.50)]
 ```
-The only difference here is we are no longer defining an array position and have now applied a filter **' [?(@.price<2.50)] '** that looks at the price key and filters for only objects that are less than 2.50
+The only difference here is we are no longer defining an array position and have now applied a filter **' [?(@.price<2.50)] '** that looks at the price key and filters for only objects that are less than 2.50.
 
 ## Parsing the Response Body
 
 Now that you've found an API call that returns the data that we need, we need to determine the path that will return only the presence information we are looking for.
->As you saw in the response on the developer center, much like our full store query example above, this specific call returned many lines of data that are irrelevant to the queue presence check, and depending on the specific call, or how many members in the queue, you may have returned thousands of lines of data. 
+>**As you saw in the response on the developer center, much like our full store query example above, this specific call returned many lines of data that are irrelevant to the queue presence check, and depending on the specific call, or how many members in the queue, you may have returned thousands of lines of data.**
 
 There are many external tools that can assist you in parsing through JSON responses for the data you need. While Genesys does not have preferred tools for performing these actions, below are a few publicly accessible tools that will be used to perform these actions for this workshop. 
->These tools are not required but can assist while learning JSON parsing.
+>**These tools are not required but can assist while learning JSON parsing.**
 
-https://goessner.net/articles/JsonPath/index.html#e2 - Can provide definitions of JSON functions and parsing examples
+  * https://goessner.net/articles/JsonPath/index.html#e2 - Can provide definitions of JSON functions and parsing examples
 
-https://jsonpathfinder.com/ - Can assist with finding paths to specific objects within JSON responses
+  * https://jsonpathfinder.com/ - Can assist with finding paths to specific objects within JSON responses
 
-http://jsonpath.com/ - Can provide visual representations of what data will be returned from specific paths
+  * http://jsonpath.com/ - Can provide visual representations of what data will be returned from specific paths
 
 By pasting the response from our developer center into tools such as path finder, you can see a visual breakdown/hierarchy of the objects and arrays within the JSON response.
 
@@ -50,7 +50,7 @@ By expanding fields underneath one of the entities, we can eventually find the p
 ![image](/images/pathfinder2.PNG)
 
 Now that we have our path, it's important to visualize the data and filter or expand our path where needed. By pasting the full response from the developer center into the JSONPath Input field, and pasting the path we discovered from JSONPathfinder into the path field, we can visualize what the actual path evaluates out to.
->you will need to replace the "X" that JSONPathFinder places at the start of the path with a "$"
+>**you will need to replace the "X" that JSONPathFinder places at the start of the path with a "$"**
 
 ![image](/images/Jsonpath1.PNG)
 
