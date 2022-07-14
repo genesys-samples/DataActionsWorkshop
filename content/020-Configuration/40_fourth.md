@@ -4,15 +4,19 @@ chapter: false
 weight: 40
 ---
 
-## Building the Data Action
+
 At this point you've identified your API call and have parsed it for the data you're trying to retrieve, now we need to tie it all together into a Data Action that can be used within Architect flows or scripts.
 
+We will start by Navigating to Admin > Actions and creating a new data action under the integration type that you created.
+
+![image](/images/createaction.PNG)
+
 ## Contracts
-You will start by constructing our input contract, which as we know from the developer center, only requires the Queue ID as input. By naming your first object you can add your input string of QueueID underneath it by selecting the "+" and ensuring the field is set to type string.
+The first step is constructing our input contract, which as we know from the developer center, only requires the Queue ID as input. By naming your first object you can add your input string of QueueID underneath it by selecting the "+" and ensuring the field is set to type string.
 
 ![image](/images/DAinputcontract.PNG)
 
-You will then define our output contract, while there are various ways to construct output contracts to allow for additional data, you will construct an object that is an array of strings.
+You will then define your output contract, while there are various ways to construct output contracts to allow for additional data, you will construct an object that is an array of strings.
 
 ![image](/images/DAoutputcontract.PNG)
 
@@ -72,6 +76,8 @@ By navigating down to step 10 we can see a breakdown of the actual error
   "errors": []
 }
 ```
-This example states "$Presences has not been set at the successtemplate", helping my identify that I have a mismatch between my translation map and success template. In the example below, line 8 has plural presences, whereas line 3 has singular.
+This example states "$Presences has not been set at the successtemplate", helping me identify that I have a mismatch between my translation map and success template. In the example below, line 8 has plural presences, whereas line 3 has singular.
 
 ![image](/images/DAtestfailure2.PNG)
+
+When tests pass and perform as expected, you can publish your data action for use within flows or scripts!

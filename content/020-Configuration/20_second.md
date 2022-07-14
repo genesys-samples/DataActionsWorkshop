@@ -9,15 +9,18 @@ JSON responses are series of objects and arrays in a hierarchical structure. You
 
 ![image](/images/storeexample.PNG)
 
-Now what if we only care about what fruits the store sells? or we're budget shopping and only want to see what the store has for under $2.00? Defining a JSON Path against the response will allow us to isolate only the items that we're concerned about.
+What if we only care about what fruits the store sells? or we're budget shopping and only want to see what the store has for under $2.00? Defining a JSON Path against the response will allow us to isolate only the items that we're concerned about.
 
 An example of a JSON Path to find all of food the store offers would look like - 
 ```
 $.Thestore.food[*]
 ```
 **'$'** - Says to start at the root object of "Thestore".
+
 **'.food'** - Says to step into the next object or array within the store of "food".
-**'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to '[0]' to return only the first object within this array.
+
+**'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to **'[0]'** to return only the first object within this array.
+>**Note: arrays in most languages index, or start, at 0, with 0 being the first item.**
 
 An example of a path that only returns objects that are under $2.50 - 
 ```
@@ -28,7 +31,7 @@ The only difference here is we are no longer defining an array position and have
 ## Parsing the Response Body
 
 Now that you've found an API call that returns the data that we need, we need to determine the path that will return only the presence information we are looking for.
->**As you saw in the response on the developer center, much like our full store query example above, this specific call returned many lines of data that are irrelevant to the queue presence check, and depending on the specific call, or how many members in the queue, you may have returned thousands of lines of data.**
+>**As you saw in the response on the developer center, much like our full store query example above, this specific call returned many lines of data that are irrelevant to our goal of checking presence within the queue. Depending on the specific call, or for this call - how many members are in the queue, you may return thousands of lines of data.**
 
 There are many external tools that can assist you in parsing through JSON responses for the data you need. While Genesys does not have preferred tools for performing these actions, below are a few publicly accessible tools that will be used to perform these actions for this workshop. 
 >**These tools are not required but can assist while learning JSON parsing.**
@@ -49,11 +52,11 @@ By expanding fields underneath one of the entities, we can eventually find the p
 
 ![image](/images/pathfinder2.PNG)
 
-Now that we have our path, it's important to visualize the data and filter or expand our path where needed. By pasting the full response from the developer center into the JSONPath Input field, and pasting the path we discovered from JSONPathfinder into the path field, we can visualize what the actual path evaluates out to.
+Now that we have our path, it's important to visualize the data and filter or expand our path where needed. By switching to the JSONPath Online Evaluator, pasting the full response from the developer center into the Input field, and pasting the path we discovered from JSONPathfinder into the path field, we can visualize what the actual path evaluates out to.
 >**you will need to replace the "X" that JSONPathFinder places at the start of the path with a "$"**
 
 ![image](/images/Jsonpath1.PNG)
 
-The response here shows a single offline status, however; we know that there are multiple users and we need the presence information for all of them. The path we are using has an array position of "[0]", meaning it's only returning the presence of the first entity, or user, within the response. By changing this to a wildcard - "[*]", we can return the presence information for all users.
+The response here shows a single offline status, however; we know that there are multiple users in this queue and we need the presence information for all of them. The path we are using has an array position of **"[0]"**, meaning it's only returning the presence of the first entity, or user, within the response. By changing this to a wildcard - **"[*]"**, we can return the presence information for all users.
 
 ![image](/images/Jsonpath2.PNG)

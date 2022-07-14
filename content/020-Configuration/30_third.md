@@ -13,9 +13,13 @@ There are 3 primary integration types we encounter when looking to create an int
 
 This procedure is for application providers who want their app to receive a token allowing it to make requests to the Genesys Cloud Platform API. The token represents a user’s permission for the app to access Genesys Cloud data. It is used when the app must authorize a request to an API endpoint. To see a list of Genesys Cloud Platform APIs, see the API resources in the Genesys Cloud Developer Center.
 
+Navigate to Admin > Oauth and create a new client.
+
 ![image](/images/auth1.PNG)
 
-Make a selection below Grant Types. Grant Types set the way an application gets an access token. Genesys Cloud supports the OAuth 2 authorization grant types listed below. Clicking the name of a grant type displays more information about it from the Genesys Cloud Developer Center. 
+For this workshop we will select **Client Credentials** below Grant Types. 
+
+Grant Types set the way an application gets an access token. Genesys Cloud supports the OAuth 2 authorization grant types listed below. Clicking the name of a grant type displays more information about it from the Genesys Cloud Developer Center. 
   * **Client Credentials Grant:** A single-step authentication process exclusively for use by non-user applications (e.g. a Windows Service or cron job). The client application provides OAuth client credentials in exchange for an access token. This authorization type is not in the context of a user and therefore will not be able to access user-specific APIs (e.g GET /v2/users/me). 
 > If assigning roles for Genesys Cloud for Salesforce, see also OAuth client permissions for Genesys Cloud for Salesforce. 
    * **Code Authorization Grant:** A two-step authentication process where a user authenticates with Genesys Cloud, then the client application is returned an authorization code. The client application provides OAuth client credentials and uses the authorization code to get an access token. The access token can then be used when making authenticated API calls. This is the most secure option and ideal for websites where API requests will be made server-side (e.g. ASP.NET or PHP) and some desktop applications where a thin client would authorize the user and pass the auth code to a back-end server to exchange for an auth token and make API requests. 
@@ -32,7 +36,7 @@ When creating an Oauth token, we need to restrict or allow what types of data th
 
 Now that we have our Oauth Client configured, its time we set up the integration with Genesys CX.
 
-Navigate to Admin > Integrations and search for "Genesys Cloud Data Actions", you will select install on this tile.
+Navigate to Admin > Integrations, search for "Genesys Cloud Data Actions" and select "Install" on this tile.
 
 ![image](/images/auth3.PNG)
 
