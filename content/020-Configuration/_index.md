@@ -4,7 +4,10 @@ chapter: true
 weight: 20
 ---
 
-Now that we have covered the basics of what a Data action is and how API calls are structured, we will work torwards the configuration components of an API (Data Action). In the next steps we will be working hands on in building your data action integration within your Genesys cloud org, authenticating the integration, and creating a schema to which your data action will call against. 
+## Configuration
+
+
+Now that we have covered the basics of what a Data Action is and how API calls are structured, we will work torwards the configuration components of an API (Data Action). In the next steps we will be working hands-on in building your data action integration within your Genesys Cloud org, authenticating the integration, and creating a schema to which your Data Action will call against. 
 
 In this section we will -
   * Find and execute a call from the Genesys Cloud Developer Center
