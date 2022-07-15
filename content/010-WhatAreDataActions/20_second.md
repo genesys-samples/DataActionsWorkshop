@@ -20,7 +20,7 @@ Data actions can be broken into the 4 following components
 Input Contracts are variables, or arrays of variables that we supply in the REST call to tell the API what specific piece of data we’re trying to invoke.
   * Example: We’re trying to retrieve user presence data from a specific queue, we construct a QueueID Variable to input into our API call allowing us to dynamically provide a new Queue ID on every call.
 
-> **Not all API Calls require a defined Input Contract, and inputs can be statically assigned.**
+> ***Not all API Calls require a defined Input Contract, and inputs can be statically assigned.***
 
 In the image below we have created an object with a QueueID input string, this input is then assigned in the request URL to allow for a dynamic Queue ID value to be assigned from an architect flow. Alternatively, if the Queue ID value does not need to change, it can be statically assigned.
 
@@ -61,6 +61,6 @@ In the image below we have -
 ### Data Action Test Tool
 The data action constructor provides a test tool which allows you to test calls and validate they are configured properly prior to deploying them. The test tool also contains an operations sequence to show you where in the RESTful process that the call is failing to allow for easier troubleshooting.
 
-In the image below we can see that the test failed to apply the output transformation, indicating the translation map should be the starting point for my troubleshooting.
+In the image below we can see that the test failed to apply the output transformation, indicating the translation map should be the starting point for our troubleshooting.
 
 ![image](/images/testtool.PNG)
