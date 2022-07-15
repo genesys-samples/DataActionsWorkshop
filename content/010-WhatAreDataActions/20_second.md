@@ -6,7 +6,7 @@ weight: 20
 
 ## Data Action Components
 
-Data actions can be broken into the 4 following components
+Data Actions can be broken into the 4 following components
 
 **1. Input Contracts**
 
@@ -38,7 +38,7 @@ In the image below we've constructed our Output Contract and have only construct
 ![image](/images/outputcontracts.PNG)
 
 ### Request URLs
-Request URL’s are the actual call that is being executed and contain the specific API path that we are invoking. In our data action constructor some calls can be defined in the simple view where we define just the URL and inputs, while other calls may require additional predicates and to be formatted in the JSON Field.
+Request URL’s are the actual call that is being executed and contain the specific API path that we are invoking. In our Data Action Constructor some calls can be defined in the simple view where we define just the URL and inputs, while other calls may require additional predicates and to be formatted in the JSON Field.
 
 In the image below we can see both the **Simple** and **JSON** request templates. We can also see the QueueID Input variable assigned in both request formats.
 
@@ -46,20 +46,20 @@ In the image below we can see both the **Simple** and **JSON** request templates
 
 ### Response Bodies
 
-The response body defines what information from the call we are trying to return and can be broken into 3 components - 
-  * Translation maps allow us to parse and map data from the API Response to variables.
-  * Translation map defaults allow us to define  default values in the event no information is returned.
-  * Success templates allow us to map the parsed data to the output contract variables we constructed so the data can be utilized for routing, scripting etc.
+The Response Body defines what information from the call we are trying to return and can be broken into 3 components - 
+  * Translation Maps allow us to parse and map data from the API Response to variables.
+  * Translation Map Defaults allow us to define  default values in the event no information is returned.
+  * Success Templates allow us to map the parsed data to the output contract variables we constructed so the data can be utilized for routing, scripting, etc.
 
 In the image below we have -
-1. Constructed a translation map with a key value pair of Presence and the path used to parse the API response for only presence information.
-2. Defined a translation map to apply a default value to presence of "NOT_SET" in the event that we do not return any data. This will allow the request to gracefully fail if no response is returned.
-3. Mapped the value of Presence from our translation map, to our 'Presences' output variable.
+1. Constructed a translation map with a key value pair of 'Presence' and the path used to parse the API response for only presence information.
+2. Defined a translation map to apply a default value to 'Presence' of "NOT_SET" in the event that we do not return any data. This will allow the request to gracefully fail if no response is returned.
+3. Mapped the value of 'Presence' from our translation map, to our *<ins>'Presences'<ins>* output variable.
 
 ![image](/images/responsebodies.PNG)
 
 ### Data Action Test Tool
-The data action constructor provides a test tool which allows you to test calls and validate they are configured properly prior to deploying them. The test tool also contains an operations sequence to show you where in the RESTful process that the call is failing to allow for easier troubleshooting.
+The Data Action Constructor provides a test tool which allows you to test calls and validate that they are configured properly prior to deploying them. The test tool also contains an operations sequence to show you where in the RESTful process that the call is failing to allow for easier troubleshooting.
 
 In the image below we can see that the test failed to apply the output transformation, indicating the translation map should be the starting point for our troubleshooting.
 
