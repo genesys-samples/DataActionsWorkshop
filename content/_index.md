@@ -4,13 +4,16 @@ chapter: true
 weight: 1
 ---
 
-# Genesys Workshop
+# Genesys Workshop Series
 
-### Welcome
-
-In this workshop you will learn to apply your foundational knowledge of [Genesys](https://genesys.com) and master example use cases that demonstrate [Experience as a Service](https://www.genesys.com/experience-as-a-service).
+## Welcome to the Genesys Cloud Data Action Workshop
 
 ### Learning Objectives
-- Setup and configure your environment.
-- Creating users and groups.
-- Configure security.
+**In this workshop, you will learn...**
+
+1. How to define data actions
+2. The various data action components
+3. How to parse a JSON Response 
+4. How to create an OAuth Client and install the integration
+5. How to construct a data action
+6. How to troubleshoot failed requests.
