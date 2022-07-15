@@ -1,13 +1,15 @@
 ---
-title: "Integration and oAuth"
+title: "Integration and OAuth"
 chapter: false
 weight: 30
 ---
 
 ## Integration and OAuth
-To start, we will walk through how we build and authenticate data actions (or data dips) within the Genesys CX UI. Before creating the integration for the data action, we must first have something to authenticate it to. This is where we create our Oauth Client token. OAuth clients allow you to make requests to the Platform API or to authenticate against Genesys Cloud, or to sync entities between Genesys Cloud and third-party systems.
+To start, we will walk through how we build and authenticate Data Actions (or data dips) within the Genesys CX UI. Before creating the integration for the Data Action, we must first have something to authenticate it to. This is where we create our OAuth Client token. OAuth clients allow you to make requests to the Platform API or to authenticate against Genesys Cloud, or to sync entities between Genesys Cloud and third-party systems.
 
-There are 3 primary integration types we encounter when looking to create an integration, the first is Platform API, Genesys CX Embeddable frameworks, and Genesys SCIM. For today, we will be focusing on a Platform API.
+There are 3 primary integration types we encounter when looking to create an integration; Platform API, Genesys CX Embeddable frameworks, and Genesys SCIM.
+
+ For today, we will be focusing on Platform API.
 
 **Platform API:**
 
@@ -28,7 +30,7 @@ Grant Types set the way an application gets an access token. Genesys Cloud suppo
 
 **Assign a Role:**
 
-When creating an Oauth token, we need to restrict or allow what types of data the token has access to. This is primarily a security measure to ensure that no auth token has more access than it should. Under the rules, we will assign the appropriate permissions the Auth token will call against when executing the contract, we define in the data action.
+When creating an OAuth token, we need to restrict or allow what types of data the token has access to. This is primarily a security measure to ensure that no auth token has more access than it should. Under the rules, we will assign the appropriate permissions the Auth token will call against when executing the contract, we define in the data action.
 
 >**To grant roles to an OAuth client, you must have those roles assigned to your profile.**
 
@@ -44,4 +46,4 @@ Navigate to the Configuration tab > Credentials and select Configure. You will b
 
 ![image](/images/auth4.PNG)
 
-After saving your integration, you can now construct Genesys Cloud data actions!
+After saving your integration, you can now construct Genesys Cloud Data Actions!
