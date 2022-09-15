@@ -17,3 +17,4 @@ Data Actions allow us the flexability to work interchangably with other applicat
 **External Data Actions** can be used to pull information from external systems to populate scripts, or update external systems with information the agent gathered on the call.
  * Example: Pulling a customer record from an external CRM to display account information to the agent within the script, and updating that customer record from within the script.
 
+
