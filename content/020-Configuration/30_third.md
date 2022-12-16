@@ -1,51 +1,53 @@
 ---
-title: "Integration and OAuth"
+title: "Integración y OAuth"
 chapter: false
 weight: 30
 ---
 
-## Integration and OAuth
-To start, we will walk through how we build and authenticate Data Actions (or data dips) within the Genesys CX UI. Before creating the integration for the Data Action, we must first have something to authenticate it to. This is where we create our OAuth Client token. OAuth clients allow you to make requests to the Platform API or to authenticate against Genesys Cloud, or to sync entities between Genesys Cloud and third-party systems.
+## Integración y OAuth
+Para empezar, veremos cómo crear y autenticar Data Actions (o Data Dips) en la interfaz de usuario de Genesys CX. Antes de crear la integración para la Acción de Datos, primero debemos tener algo para autenticarla. Aquí es donde creamos nuestro token de Cliente OAuth. Los clientes OAuth le permiten realizar solicitudes a la API de la plataforma o autenticarse contra Genesys Cloud, o sincronizar entidades entre Genesys Cloud y sistemas de terceros.
 
-There are 3 primary integration types we encounter when looking to create an integration; Platform API, Genesys CX Embeddable frameworks, and Genesys SCIM.
+Hay 3 tipos principales de integración que encontramos cuando buscamos crear una integración: Platform API, Genesys CX Embeddable frameworks y Genesys SCIM.
 
- For today, we will be focusing on Platform API.
+ Hoy nos centraremos en la API de plataforma.
 
-**Platform API:**
+**API de la Platforma:**
 
-This procedure is for application providers who want their app to receive a token allowing it to make requests to the Genesys Cloud Platform API. The token represents a user’s permission for the app to access Genesys Cloud data. It is used when the app must authorize a request to an API endpoint. To see a list of Genesys Cloud Platform APIs, see the API resources in the Genesys Cloud Developer Center.
+Este procedimiento es para proveedores de aplicaciones que desean que su aplicación reciba un token que le permita realizar solicitudes a la API de Genesys Cloud Platform. El token representa el permiso de un usuario para que la aplicación acceda a los datos de Genesys Cloud. Se utiliza cuando la aplicación debe autorizar una solicitud a un punto final de la API. Para ver una lista de las API de Genesys Cloud Platform, consulte los recursos de API en el Centro de Desarrolladores de Genesys Cloud.
 
-Navigate to Admin > Oauth and create a new client.
+Vaya a Admin > Oauth y cree un nuevo cliente.
 
 ![image](/images/auth1.PNG)
 
-For this workshop we will select **Client Credentials** below Grant Types. 
+Para este taller seleccionaremos **Client Credentials** debajo de Tipos de Concesión (Grant Types). 
 
-Grant Types set the way an application gets an access token. Genesys Cloud supports the OAuth 2 authorization grant types listed below. Clicking the name of a grant type displays more information about it from the Genesys Cloud Developer Center. 
-  * **Client Credentials Grant:** A single-step authentication process exclusively for use by non-user applications (e.g. a Windows Service or cron job). The client application provides OAuth client credentials in exchange for an access token. This authorization type is not in the context of a user and therefore will not be able to access user-specific APIs (e.g GET /v2/users/me). 
-> If assigning roles for Genesys Cloud for Salesforce, see also OAuth client permissions for Genesys Cloud for Salesforce. 
-   * **Code Authorization Grant:** A two-step authentication process where a user authenticates with Genesys Cloud, then the client application is returned an authorization code. The client application provides OAuth client credentials and uses the authorization code to get an access token. The access token can then be used when making authenticated API calls. This is the most secure option and ideal for websites where API requests will be made server-side (e.g. ASP.NET or PHP) and some desktop applications where a thin client would authorize the user and pass the auth code to a back-end server to exchange for an auth token and make API requests. 
-  * **Implicit Grant (Browser):** A single-step authentication process where a user authenticates with Genesys Cloud and the client application is directly returned an access token. This option provides less security for the access token than the authorization code grant, but is ideal for client-side browser applications (i.e. JavaScript) and most desktop applications (e.g. .NET WPF/WinForms or Java desktop programs). 
-  * **SAML2 Bearer:** An authentication process wherein a client application may use a Security Assertion Markup Language (SAML2) assertion to request a bearer token. See also: Genesys Cloud single sign-on and identity provider solution.
+Los tipos de concesión establecen la forma en que una aplicación obtiene un token de acceso. Genesys Cloud admite los tipos de concesión de autorización OAuth 2 que se enumeran a continuación. Al hacer clic en el nombre de un tipo de concesión se muestra más información sobre él en el Centro de desarrollo de Genesys Cloud (Genesys Cloud Developer Center). 
+  * **Concesión de credenciales de cliente:** Un proceso de autenticación de un solo paso exclusivamente para uso de aplicaciones que no son de usuario (por ejemplo, un servicio de Windows o un trabajo cron). La aplicación cliente proporciona credenciales de cliente OAuth a cambio de un token de acceso. Este tipo de autorización no está en el contexto de un usuario y, por lo tanto, no podrá acceder a las API específicas de usuario (por ejemplo, GET /v2/users/me). 
+> Si asigna roles para Genesys Cloud for Salesforce, consulte también los permisos de cliente OAuth para Genesys Cloud for Salesforce.  
+  * **Concesión de autorización de código:** Un proceso de autenticación de dos pasos en el que un usuario se autentica con Genesys Cloud y, a continuación, se devuelve a la aplicación cliente un código de autorización. La aplicación cliente proporciona credenciales de cliente OAuth y utiliza el código de autorización para obtener un token de acceso. El token de acceso se puede utilizar para realizar llamadas a la API autenticadas. Esta es la opción más segura e ideal para sitios web en los que las solicitudes de API se realizan desde el servidor (por ejemplo, ASP.NET o PHP) y algunas aplicaciones de escritorio en las que un cliente ligero autoriza al usuario y pasa el código de autenticación a un servidor back-end para intercambiarlo por un token de autenticación y realizar solicitudes de API. 
+  * **Concesión implícita (navegador):** Un proceso de autenticación de un solo paso en el que un usuario se autentica con Genesys Cloud y la aplicación cliente recibe directamente un token de acceso. Esta opción proporciona menos seguridad para el token de acceso que la concesión de código de autorización, pero es ideal para aplicaciones de navegador del lado del cliente (es decir, JavaScript) y la mayoría de las aplicaciones de escritorio (por ejemplo, .NET WPF/WinForms o programas de escritorio Java). 
+  * **Portador SAML2:** Proceso de autenticación en el que una aplicación cliente puede utilizar una aserción del Lenguaje de Marcado de Aserción de Seguridad (SAML2) para solicitar un token de portador. Véase también: Solución de inicio de sesión único y proveedor de identidad de Genesys Cloud (Genesys Cloud single sign-on and identity provider solution).
 
-**Assign a Role:**
+**Asignar un Rol**
 
-When creating an OAuth token, we need to restrict or allow what types of data the token has access to. This is primarily a security measure to ensure that no auth token has more access than it should. Under the rules, we will assign the appropriate permissions the Auth token will call against when executing the contract, we define in the data action.
+Al crear un token OAuth, necesitamos restringir o permitir a qué tipos de datos tiene acceso el token. Esto es principalmente una medida de seguridad para asegurar que ningún auth token tiene más acceso del que debería. Bajo las reglas, asignaremos los permisos apropiados a los que el token Auth llamará cuando ejecute el contrato, que definimos en la acción de datos.
 
->**To grant roles to an OAuth client, you must have those roles assigned to your profile.**
+**Para conceder funciones a un cliente OAuth, debe tener esas funciones asignadas a su perfil.**
 
 ![image](/images/auth2.PNG)
 
-Now that we have our Oauth Client configured, its time we set up the integration with Genesys CX.
+Ahora que tenemos nuestro cliente Oauth configurado, es el momento de configurar la integración con Genesys CX.
 
 Navigate to Admin > Integrations, select the **"+ Integrations"** to add a new integration and search for "Genesys Cloud Data Actions" and select "Install" on this tile.
 
+
 ![image](/images/auth3.PNG)
 
-Navigate to the Configuration tab > Credentials and select Configure. You will be prompted for your OAuth client information.
+Vaya a la pestaña Configuración > Credenciales y seleccione Configurar. Se te pedirá la información de tu cliente OAuth.
 
 ![image](/images/auth4.PNG)
 
 After saving your integration, you will need to enable it, you can do this by selecting the slider in the integration list. You can now construct Genesys Cloud Data Actions!
 
 ![image](/images/integrationactive.PNG)
+
