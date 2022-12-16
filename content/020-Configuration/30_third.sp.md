@@ -32,14 +32,13 @@ Los tipos de concesión establecen la forma en que una aplicación obtiene un to
 
 Al crear un token OAuth, necesitamos restringir o permitir a qué tipos de datos tiene acceso el token. Esto es principalmente una medida de seguridad para asegurar que ningún auth token tiene más acceso del que debería. Bajo las reglas, asignaremos los permisos apropiados a los que el token Auth llamará cuando ejecute el contrato, que definimos en la acción de datos.
 
-**Para conceder funciones a un cliente OAuth, debe tener esas funciones asignadas a su perfil.**
+>**Para conceder funciones a un cliente OAuth, debe tener esas funciones asignadas a su perfil.**
 
 ![image](/images/auth2.PNG)
 
 Ahora que tenemos nuestro cliente Oauth configurado, es el momento de configurar la integración con Genesys CX.
 
-Navigate to Admin > Integrations, select the **"+ Integrations"** to add a new integration and search for "Genesys Cloud Data Actions" and select "Install" on this tile.
-
+Vaya a Admin > Integraciones, busque "Genesys Cloud Data Actions" y seleccione "Instalar" en este mosaico.
 
 ![image](/images/auth3.PNG)
 
@@ -47,7 +46,4 @@ Vaya a la pestaña Configuración > Credenciales y seleccione Configurar. Se te 
 
 ![image](/images/auth4.PNG)
 
-After saving your integration, you will need to enable it, you can do this by selecting the slider in the integration list. You can now construct Genesys Cloud Data Actions!
-
-![image](/images/integrationactive.PNG)
-
+Después de guardar su integración, ya puede construir las Acciones de Datos en la Nube de Genesys.
