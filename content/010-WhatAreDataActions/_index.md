@@ -1,17 +1,17 @@
 ---
-title: "What are Data Actions"
+title: "Qué son las acciones de datos"
 chapter: true
 weight: 10
 ---
 
-## Getting Started With Data Actions
+## Introducción a las acciones de datos - Data Actions
 
-Welcome to our Data Actions workshop where we will not only cover what Data Actions are, but also how they work at the root level. As we move through this workshop, you will gain an understanding of what data actions are comprised of, how they are used in day to day use cases, and how to configure your very own Data Action from scratch. We expect the course will take 2 hours to complete in total.
+Bienvenido a nuestro taller de Acciones de datos, donde no solo cubriremos qué son las Acciones de datos, sino también cómo funcionan en el nivel raíz. A medida que avanzamos en este taller, comprenderá de qué se componen las acciones de datos, cómo se usan en los casos de uso diarios y cómo configurar su propia acción de datos desde cero. Esperamos que el curso tarde 2 horas en completarse en total.
 
-We will start at the beginning to understand the basics of Data Actions and APIs. To begin this journey, we will start with:
+Comenzaremos por el principio para comprender los conceptos básicos de las acciones de datos y las API. Para iniciar este viaje, comenzaremos con:
 
-  * Define Data Actions
-  * Understand Data Action components
+  * Definir acciones de datos - Data Actions
+  * Comprender los componentes de las acciones de datos - Data Actions
 
   ![image](/images/API_Image.jpg)
 

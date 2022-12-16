@@ -1,62 +1,62 @@
 ---
-title: "Parsing API Responses"
+title: "Análisis de las respuestas de la API"
 chapter: false
 weight: 20
 ---
 
-## Understand JSON Paths
-JSON responses are series of Objects and Arrays in a hierarchical structure. You start with a base object, in the below example, the base object will be "Thestore". Our example "Thestore" sells an array of different foods and silverware. If we run a query against "Thestore"'s inventory we will recieve a response containing all of the objects that "Thestore" sells and any attributes associated to these objects, such as their category (fruits, vegetables, etc.) and price.
+## Comprender las rutas JSON
+Las respuestas JSON son series de Objetos y Arrays en una estructura jerárquica. Se empieza con un objeto base, en el ejemplo de abajo, el objeto base será "Thestore". Nuestro ejemplo "Thestore" vende una serie de diferentes alimentos y cubiertos. Si ejecutamos una consulta sobre el inventario de "Thestore" recibiremos una respuesta con todos los objetos que vende "Thestore" y los atributos asociados a estos objetos, como su categoría (frutas, verduras, etc.) y su precio.
 
 ![image](/images/storeexample.PNG)
 
-What if we only care about what fruits "Thestore" sells? If we are on a budget shopping and only want to see what the store has for under $2.00? Defining a JSON Path against the response will allow us to isolate only the items that we're concerned about.
+¿Y si sólo nos interesan las frutas que vende "Thestore"? ¿Y si tenemos un presupuesto limitado y sólo queremos ver lo que la tienda tiene por menos de 2 dólares? Definir una ruta JSON contra la respuesta nos permitirá aislar sólo los artículos que nos interesan.
 
-An example of a JSON Path to find all of the food that "Thestore" offers would look like - 
+Un ejemplo de ruta JSON para encontrar todos los alimentos que ofrece "Thestore" sería el siguiente - 
 ```
 $.Thestore.food[*]
 ```
-**'$'** - Says to start at the root object of "Thestore".
+**'$'** - Dice que comience en el objeto raíz de "Thestore".
 
-**'.food'** - Says to step into the next object or array ("food") within "Thestore".
+**'.food'** - Indica que hay que pasar al siguiente objeto o matriz ("comida") dentro de "Thestore".
 
-**'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to **'[0]'** to return only the first object within this array.
->**Note: arrays in most languages index, or start, at 0, with 0 being the first item.**
+**'[*]'** - es una notación de posición de array, que indica que se devuelvan todos los objetos dentro del array de comida, esto podría cambiarse a **'[0]'** para devolver sólo el primer objeto dentro de este array.
+>**Nota: en la mayoría de los idiomas, las matrices se indexan o comienzan en 0, siendo 0 el primer elemento.**
 
-An example of a path that only returns objects that are under $2.50 - 
+Un ejemplo de una ruta (path) que sólo devuelve objetos que cuestan menos de 2,50 dólares - 
 ```
 $.Thestore.food[?(@.price<2.50)]
 ```
-The only difference here is we are no longer defining an array position and have now applied a filter **' [?(@.price<2.50)] '** that looks at the price key and filters for only objects that are less than $2.50.
+La única diferencia aquí es que ya no estamos definiendo una posición de matriz y ahora hemos aplicado un filtro **' [?(@.price<2.50)] '** que mira la clave de precio y filtra sólo los objetos que son inferiores a 2,50 dólares.
 
-## Parsing the Response Body
+## Análisis del cuerpo de la respuesta
 
-Now that you've found an API call that returns the data that we need, we need to determine the path that will return only the presence information we are looking for.
->**As you saw in the response on the developer center, much like our full store query example above, this specific call returned many lines of data that are irrelevant to our goal of checking presence within the queue. Depending on the specific call, or for this call - how many members are in the queue, you may return thousands of lines of data.**
+Ahora que ha encontrado una llamada a la API que devuelve los datos que necesitamos, necesitamos determinar la ruta que devolverá sólo la información de presencia que estamos buscando.
+>**Como hemos visto en la respuesta del centro de desarrollo, al igual que en nuestro ejemplo anterior de consulta al almacén completo, esta llamada específica devolvía muchas líneas de datos que son irrelevantes para nuestro objetivo de comprobar la presencia dentro de la cola. Dependiendo de la llamada específica, o para esta llamada - cuántos miembros están en la cola, puede devolver miles de líneas de datos.**
 
-There are many external tools that can assist you in parsing through JSON responses for the data you need. While Genesys does not have preferred tools for performing these actions, below are a few publicly accessible tools that will be used to perform these actions for this workshop. 
->**These tools are not required but can assist while learning JSON parsing.**
+Existen muchas herramientas externas que pueden ayudarle a analizar las respuestas JSON en busca de los datos que necesita. Aunque Genesys no tiene herramientas preferidas para realizar estas acciones, a continuación se muestran algunas herramientas de acceso público que se utilizarán para realizar estas acciones en este taller. 
+>**Estas herramientas no son necesarias, pero pueden ayudar mientras se aprende el análisis sintáctico de JSON.**
 
-  * https://goessner.net/articles/JsonPath/index.html#e2 - Can provide definitions of JSON functions and parsing examples
+  * https://goessner.net/articles/JsonPath/index.html#e2 - Puede proporcionar definiciones de funciones JSON y ejemplos de análisis sintáctico.
 
-  * https://jsonpathfinder.com/ - Can assist with finding paths to specific objects within JSON responses
+  * https://jsonpathfinder.com/ - Puede ayudar a encontrar rutas a objetos específicos dentro de las respuestas JSON
 
-  * http://jsonpath.com/ - Can provide visual representations of what data will be returned from specific paths
+  * http://jsonpath.com/ - Puede proporcionar representaciones visuales de los datos que se devolverán a partir de rutas específicas.
 
-By pasting the response from our developer center into tools such as path finder, you can see a visual breakdown/hierarchy of the objects and arrays within the JSON response.
+Al pegar la respuesta de nuestro developer center en herramientas como path finder, puede ver un desglose/jerarquía visual de los objetos y matrices dentro de la respuesta JSON.
 
-In the Example below, we can see the Path Finder tool has identified 2 entities within our JSON response, which correlate to the 2 users we have in the queue.
+En el ejemplo siguiente, podemos ver que la herramienta Path Finder ha identificado 2 entidades dentro de nuestra respuesta JSON, que se correlacionan con los 2 usuarios que tenemos en la cola.
 
 ![image](/images/pathfinder1.PNG)
 
-By expanding fields underneath one of the entities, we can eventually find the presence field. By selecting the presence field, we see that the tool has populated a "Path" to this field for us. 
+Desplegando los campos debajo de una de las entidades, podemos encontrar el campo de presencia. Al seleccionar el campo de presencia, vemos que la herramienta ha rellenado una "Ruta" (Path) a este campo para nosotros. 
 
 ![image](/images/pathfinder2.PNG)
 
-Now that we have our path, it's important to visualize the data and filter or expand our path where needed. By switching to the JSONPath Online Evaluator, pasting the full response from the developer center into the Input field, and pasting the path we discovered from JSONPathfinder into the path field, we can visualize what the actual path evaluates out to.
->**you will need to replace the "X" that JSONPathFinder places at the start of the path with a "$"**
+Ahora que tenemos nuestra ruta, es importante visualizar los datos y filtrar o ampliar nuestra ruta cuando sea necesario. Si cambiamos al evaluador en línea de JSONPath, pegamos la respuesta completa del centro de desarrollo en el campo Entrada y pegamos la ruta que descubrimos en JSONPathfinder en el campo Ruta (path), podremos visualizar el resultado de la evaluación de la ruta real.
+>**tendrá que sustituir la "X" que JSONPathFinder coloca al principio de la ruta por un "$"**
 
 ![image](/images/Jsonpath1.PNG)
 
-The response here shows a single offline status, however; we know that there are multiple users in this queue and we need the presence information for all of them. The path we are using has an array position of **"[0]"**, meaning it's only returning the presence of the first entity, or user within the response. By changing this to a wildcard - **"[*]"**, we can return the presence information for all users.
+Sin embargo, sabemos que hay varios usuarios en esta cola y necesitamos la información de presencia de todos ellos. La ruta que estamos utilizando tiene una posición de matriz de **"[0]"**, lo que significa que sólo devuelve la presencia de la primera entidad, o usuario dentro de la respuesta. Cambiando esto por un comodín - **"[*]"**, podemos devolver la información de presencia de todos los usuarios.
 
 ![image](/images/Jsonpath2.PNG)
