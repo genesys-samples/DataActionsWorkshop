@@ -1,25 +1,23 @@
 ---
-title: Definiciones adicionales"
+title: Additional Definitions"
 chapter: false
 weight: 30
 ---
 
 
 
-### Objetos y matrices
-Los objetos son listas de pares Clave-Valor o matrices de pares Clave-Valor.
+### Objects and Arrays
+Objects are lists of Key and Value pairs, or arrays of Key and Value pairs.
 
-Los pares Clave-Valor son listas de claves como "Edad" y valores como "30". 
+Key Value pairs are lists of keys such as ‘Age’ and Values such as ‘30’.
 
-Las claves son siempre cadenas, pero los valores pueden ser cadenas, enteros, booleanos o matrices.
+Keys are always strings but Values can be string, integer, boolean, or array value types.
 
-Los objetos están delimitados por { } (científicamente conocidos como corchetes), mientras que las matrices están delimitadas por [ ] (científicamente conocidos como corchetes).
+Objects are delineated by { } (scientifically known squiggly brackets), while Arrays are delineated by [ ] (scientifically known as not as squiggly brackets)
 
 ![image](/images/objectsarrays.PNG)
 
-### Variables incorporadas de Architect - Built-in Variables
-Architect tiene una lista de variables nativas a las que se puede hacer referencia dentro de los flujos de Architect sin tener que invocar una acción de datos para obtener los datos. 
-Si está preparando la construcción de una acción de datos para recopilar cualquier elemento, como el ID de conversación de una llamada que entra en un flujo, consulte la página de variables incorporadas para ver si está disponible de forma nativa!
-https://help.mypurecloud.com/articles/architect-default-variables/
+### Architect Built-in Variables
+Architect has a list of native variables that are referencable within architect flows without having to invoke a Data Action to pull the data. If you’re preparing to construct a data action to gather any item such as the conversation ID of a call entering a flow, check the built-in variables page to see if it is natively available! https://help.mypurecloud.com/articles/architect-default-variables/
 
 ![image](/images/architectbuiltinvariables.PNG)

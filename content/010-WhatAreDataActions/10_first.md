@@ -1,18 +1,18 @@
 ---
-title: "Definiciones básicas"
+title: "Basic Definitions"
 chapter: false
 weight: 10
 ---
 
-## Definición de acciones de datos
-En pocas palabras, las acciones de datos (Data Actions) son lo que Genesys define como nuestro constructor de llamadas API REST.
+## Defining Data Actions
+Simply put, Data Actions are what Genesys defines as our REST API call constructor.
 
-Las acciones de datos se utilizan para acceder a información tanto interna como externa a la plataforma que de otro modo no estaría disponible. Esta información, como la cola avanzada o los datos de CRM, se puede usar para invocar decisiones de enrutamiento poderosas o proporcionar información avanzada de secuencias de comandos/pantallas emergentes a sus agentes (entre muchas otras utilizaciones). Las acciones de datos se pueden dividir en 2 categorías, **Internas** y **Externas**.
+Data Actions are used to access information both internal and external to the platform that wouldn't otherwise be available. This information, such as advanced queue or CRM data can be used to invoke powerful routing decisions or provide advanced script/screenpop information to your agents (amongst many other utilizations). Data Actions can be split into 2 categories, Internal and External.
 
-Las acciones de datos nos permiten la flexibilidad de trabajar de manera intercambiable con otras aplicaciones y pasar datos libremente a donde deben estar. Estos pueden ser escenarios como llamar a atributos de datos personalizados para presentarlos en un script de agente, enviar datos a un almacén de CRM doméstico, exportar datos y automatizar procesos dentro del entorno Genesys CX.
+Data Actions allow us the flexability to work interchangably with other applications and freely pass data to where it needs to be. This can be scenarios like calling custom data attributs to present in an agent script, push data to a home CRM warehouse, exporting data and automation of processes within the Genesys CX environment.
 
-**Las acciones de datos internos - Internal Data Actions** se utilizan "normalmente" para tomar decisiones de enrutamiento o actualizar los recursos y las configuraciones de la plataforma.
-   * Ejemplo: verificar cuántos agentes están en cola para determinar si se debe ofrecer a la persona que llama una opción de devolución de llamada.
+**Internal Data Actions** are ‘typically’ used to make routing decisions or update platform resources and configurations.
+   * Example: Checking how many agents are on queue to determine whether to offer the caller a callback option.
 
-**Las acciones de datos externos - External Data Actions** se pueden usar para extraer información de sistemas externos para completar scripts o actualizar sistemas externos con información que el agente recopiló en la llamada.
-  * Ejemplo: extraer un registro de cliente de un CRM externo para mostrar la información de la cuenta al agente dentro del script y actualizar ese registro de cliente desde el script.
+**External Data Actions** can be used to pull information from external systems to populate scripts, or update external systems with information the agent gathered on the call.
+  * Example: Pulling a customer record from an external CRM to display account information to the agent within the script, and updating that customer record from within the script.

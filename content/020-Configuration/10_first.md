@@ -4,46 +4,45 @@ chapter: false
 weight: 10
 ---
 
-> **El centro para desarrolladores de Genesys Cloud (Developer Center) contiene numerosos recursos para desarrolladores, como ejemplos de código, planos, SDK y, como veremos en breve, un sólido explorador de API.**
+> **The Genesys Cloud Developer center contains numerous developer resources such as code examples, blueprints, SDK's, and as we will see shortly - A robust API explorer.**
 
 
 
 
 
-## Identifique y ejecute su llamada a la API
+## Identify and Execute your API Call
 
-En esta sección vamos a encontrar y ejecutar una llamada para encontrar la presencia de todos los usuarios dentro de una cola dada.
+In this section we will be finding and executing a call to find the presence of all users within a given queue.
 
-Una vez que haya navegado e iniciado sesión en el **[Developer Center](https://developer.genesys.cloud/)**, seleccione el mosaico Explorador de API que se muestra a continuación.
+Once you have navigated to and logged into the **[Developer Center](https://developer.genesys.cloud/)**, select the API Explorer tile displayed below.
 
 ![image](/images/devcenter.PNG)
 
-El Explorador de API le permite filtrar y buscar en todos los puntos finales de API accesibles la llamada que está buscando y ejecutarla sin necesidad de una acción de datos totalmente configurada.
+The API Explorer allows you to filter and search through all accessible API Endpoints for the call you're looking for and execute that call without requiring a fully configured Data Action.
 
-Empezaremos filtrando por las API que creamos que pueden contener la información que buscamos.
->**Es posible que tenga que trabajar con las llamadas a la API que considere relevantes y ejecutarlas para determinar qué punto final proporciona la información que necesita. También es posible que haya numerosas llamadas que proporcionen el dato que busca. En este taller navegaremos directamente a la llamada que necesitamos.**
+We will start by filtering for the API's we think may contain the information we're looking for.
+>**You may need to work through API calls you believe are relevant and execute them to determine which endpoint provides the information you need. There may also be numerous calls that provide the piece of data you are looking for. In this workshop we will navigate directly to the call that we need.**
 
-1. En la parte derecha, borre todas las categorías y, a continuación, vuelva a añadir la categoría "Enrutamiento" (Routing) al filtro.
-2. Busque "Cola" (Queue) en el cuadro de búsqueda.
-3. Marque la casilla "GET" para filtrar sólo las solicitudes GET.
+1. On the right hand side, clear all categories and then add the "Routing" category back to the filter.
+2. Search for "Queue" in the search box
+3. Check the "GET" box to filter for only GET requests
 
 ![image](/images/explorerfilter.PNG)
 
-Una vez que hemos encontrado nuestra llamada, en este caso **/api/v2/routing/queues/{queueId}/members** necesitamos configurarla antes de su ejecución.
+Once we have found our call, in this case **/api/v2/routing/queues/{queueId}/members** we need to configure it prior to execution.
 
-1. Desactivar el modo lectura, esto nos permitirá ejecutar directamente desde el centro de desarrollo
-2. Introduzca su queueId
->**La mayoría de los componentes de configuración dentro de Genesys Cloud tienen asignado un GUID, o Identificador Único Global. Navegando a la cola desde su panel de administración puede encontrar el GUID dentro de la URL.**
+1. Disable reading mode, this will allow us to execute directly from the developer center
+2. Input your queueId
+>**Most configuration components within Genesys Cloud are assigned a GUID, or Globally Unique Identifier. By navigating to the queue from your administration panel you can find the GUID within the URL.**
 
 ![image](/images/queueguid.PNG)
 
-3. Desplegar la llamada para mostrar la información de Presencia
->**Algunas llamadas ocultan información adicional por defecto, pero pueden ampliarse o filtrarse para añadir o eliminar información.**
+3. Expand the call to display Presence information
+>**Some calls hide additional information by default, but can be expanded or filtered to add or remove information.**
 
 ![image](/images/explorerconfig.PNG)
 
-Ahora que nuestra llamada ha sido configurada, ejecutaremos la llamada y verificaremos que la información que estamos buscando, está contenida en el cuerpo de la respuesta.
->**Sabemos que hemos encontrado la llamada correcta porque podemos ver la presencia del usuario en el cuerpo de la respuesta.**
+Now that our call has been configured, we will execute the call and verify the information we're looking for, is contained within the response body.
+>**We know we've found the correct call because we can see user presence in the response body.**
 
 ![image](/images/explorerexecute.PNG)
-

@@ -1,19 +1,19 @@
 ---
-title: "Introducción a las acciones de datos"
+title: "Introduction to Data Actions"
 chapter: true
 weight: 1
 ---
 
-# Serie de talleres de Genesys
+# Genesys Workshop Series
 
-## Bienvenido al taller de Acciones de Datos de Genesys Cloud 
+## Welcome to the Genesys Cloud Data Action Workshop
 
-### Objetivos de aprendizaje
-**En este taller usted aprenderá...**
+### Learning Objectives
+**In this workshop, you will learn...**
 
-1. Cómo definir acciones de datos
-2. Los diversos componentes de la acción de datos
-3. Cómo analizar una respuesta JSON
-4. Cómo crear un Cliente OAuth e instalar la integración
-5. Cómo construir una acción de datos
-6. Cómo solucionar problemas de solicitudes fallidas.
+1. How to define data actions
+2. The various data action components
+3. How to parse a JSON Response 
+4. How to create an OAuth Client and install the integration
+5. How to construct a data action
+6. How to troubleshoot failed requests.
