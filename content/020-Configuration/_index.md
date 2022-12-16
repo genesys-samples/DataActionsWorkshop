@@ -1,19 +1,19 @@
 ---
-title: "Configuration"
+title: "Configuración"
 chapter: true
 weight: 20
 ---
 
-## Configuration
+## Configuración
 
 
-Now that we have covered the basics of what a Data Action is and how API calls are structured, we will work torwards the configuration components of an API (Data Action). In the next steps we will be working hands-on in building your data action integration within your Genesys Cloud org, authenticating the integration, and creating a schema to which your Data Action will call against. 
+Ahora que hemos cubierto los conceptos básicos de lo que es una acción de datos y cómo se estructuran las llamadas a la API, trabajaremos en los componentes de configuración de una API (acción de datos). En los siguientes pasos trabajaremos de forma práctica en la creación de su integración de acción de datos dentro de su org de Genesys Cloud, autenticando la integración y creando un esquema al que llamará su acción de datos. 
 
-In this section we will -
-  * Find and execute a call from the Genesys Cloud Developer Center
-  * Use JSON path tools to parse the responses for the data we're looking for
-  * Create an OAuth Client and Install the Data Actions Integration
-  * Use the Data Action constructor to build our first API Call
+En esta sección vamos a.
+  * Encontrar y ejecutar una llamada desde el Genesys Cloud Developer Center.
+  * Utilizar herramientas de ruta JSON para analizar las respuestas de los datos que estamos buscando.
+  * Crear un cliente OAuth e instalar la integración de acciones de datos.
+  * Utilizaremos el constructor Data Action para crear nuestra primera llamada a la API
 
 
 

@@ -1,66 +1,66 @@
 ---
-title: "Component Definitions"
+title: "Definición de componentes"
 chapter: false
 weight: 20
 ---
 
-## Data Action Components
+## Componentes de las acciones de datos - Data Actions
 
-Data Actions can be broken into the 4 following components
+Las acciones de datos se pueden dividir en los siguientes 4 componentes
 
-**1. Input Contracts**
+**1. Contratos de entrada - Input Contracts**
 
-**2. Output Contracts**
+**2. Contratos de salida - Output Contracts**
 
-**3. Request URLs**
+**3. URLs de solicitud - Request URLs**
 
-**4. Response Bodies**
+**4. Cuerpos de respuesta - Response Bodies**
 
-### Input Contracts
-Input Contracts are variables, or arrays of variables that we supply in the REST call to tell the API what specific piece of data we’re trying to invoke.
-  * Example: We’re trying to retrieve user presence data from a specific queue, we construct a QueueID Variable to input into our API call allowing us to dynamically provide a new Queue ID on every call.
+### Contratos de entrada
+Los contratos de entrada son variables o conjuntos de variables que proporcionamos en la llamada REST para decirle a la API qué dato específico estamos tratando de invocar.
+   * Ejemplo: estamos tratando de recuperar datos de presencia de usuarios de una cola específica, construimos una variable de QueueID para ingresar en nuestra llamada API, lo que nos permite proporcionar dinámicamente un nuevo ID de cola en cada llamada.
 
-> ***Not all API Calls require a defined Input Contract, and inputs can be statically assigned.***
+> **No todas las llamadas API requieren un contrato de entrada definido, y las entradas se pueden asignar de forma estática.**
 
-In the image below we have created an object with a QueueID input string, this input is then assigned in the request URL to allow for a dynamic Queue ID value to be assigned from an architect flow. Alternatively, if the Queue ID value does not need to change, it can be statically assigned.
+En la imagen a continuación, hemos creado un objeto con una cadena de entrada de QueueID, esta entrada luego se asigna en la URL de solicitud para permitir que se asigne un valor de ID de cola dinámico desde un flujo de architect. Alternativamente, si el valor de ID de cola no necesita cambiar, se puede asignar de forma estática.
 
 ![image](/images/inputcontracts.PNG)
 
-### Output Contracts
-In an API response we may receive hundreds of lines of data, but only care about a single line.
-Output Contracts are where we define what data from the call we want to action off of.
-  * Example: We’ve executed a call to provide us all of the queue details, we only need to see agent presence, so we set a variable of Presence to store this information at the end of the call.
+### Contratos de salida
+En una respuesta de API, podemos recibir cientos de líneas de datos, pero solo nos importa una sola línea.
+Los Contratos de Salida son donde definimos los datos de la llamada sobre los que queremos actuar.
+  * Ejemplo: Hemos ejecutado una llamada para que nos proporcione todos los detalles de la cola, sólo necesitamos ver la presencia del agente, por lo que establecemos una variable de Presencia para almacenar esta información al final de la llamada.
 
-  >**Not all API Calls require a defined Output Contract; Some calls may not actually return data that we wish to reference.**
+  >**No todas las Llamadas API requieren un Contrato de Salida definido; es posible que algunas llamadas en realidad no devuelvan datos a los que deseamos hacer referencia.**
 
-In the image below we've constructed our Output Contract and have only constructed Presence as an output variable. In the response body defined later we can parse the response for presence and store just that value to our single output variable.
+En la imagen a continuación, hemos construido nuestro Contrato de salida y solo hemos construido Presencia como una variable de salida. En el cuerpo de la respuesta definido más adelante, podemos analizar la respuesta en busca de presencia y almacenar solo ese valor en nuestra única variable de salida.
 
 ![image](/images/outputcontracts.PNG)
 
-### Request URLs
-Request URL’s are the actual call that is being executed and contain the specific API path that we are invoking. In our Data Action Constructor some calls can be defined in the simple view where we define just the URL and inputs, while other calls may require additional predicates and to be formatted in the JSON Field.
+### URLs de solicitud
+Las URL de solicitud son la llamada real que se está ejecutando y contienen la ruta de API específica que estamos invocando. En nuestro constructor de acciones de datos, algunas llamadas se pueden definir en la vista simple donde definimos solo la URL y las entradas, mientras que otras llamadas pueden requerir predicados adicionales y formatearse en el campo JSON.
 
-In the image below we can see both the **Simple** and **JSON** request templates. We can also see the QueueID Input variable assigned in both request formats.
+En la imagen a continuación, podemos ver las plantillas de solicitud **Simple** y **JSON**. También podemos ver la variable de entrada QueueID asignada en ambos formatos de solicitud.
 
 ![image](/images/requesturls.PNG)
 
-### Response Bodies
+### Cuerpos de respuesta
 
-The Response Body defines what information from the call we are trying to return and can be broken into 3 components - 
-  * Translation Maps allow us to parse and map data from the API Response to variables.
-  * Translation Map Defaults allow us to define  default values in the event no information is returned.
-  * Success Templates allow us to map the parsed data to the output contract variables we constructed so the data can be utilized for routing, scripting, etc.
+El cuerpo de la respuesta define qué información de la llamada estamos tratando de devolver y se puede dividir en 3 componentes. 
+  * Los mapas de traducción (Translation Maps) nos permiten analizar y asignar datos de la respuesta de la API a variables.
+  * Los valores predeterminados de los mapas de traducción (Translation Map Defaults) nos permiten definir valores predeterminados en caso de que no se devuelva información.
+  * Las plantillas de éxito (Success Templates) nos permiten asignar los datos analizados a las variables de contrato de salida que hemos construido para que los datos puedan ser utilizados para el enrutamiento, secuencias de comandos, etc.
 
-In the image below we have -
-1. Constructed a translation map with a key value pair of 'Presence' and the path used to parse the API response for only presence information.
-2. Defined a translation map to apply a default value to 'Presence' of "NOT_SET" in the event that we do not return any data. This will allow the request to gracefully fail if no response is returned.
-3. Mapped the value of 'Presence' from our translation map, to our *<ins>'Presences'<ins>* output variable.
+En la imagen de abajo tenemos -
+1. Construido un mapa de traducción con un par clave-valor de 'Presencia' y la ruta utilizada para analizar la respuesta de la API sólo para la información de presencia.
+2. Definido un mapa de traducción para aplicar un valor por defecto a 'Presence' de "NOT_SET" en el caso de que no devolvamos ningún dato. Esto permitirá que la solicitud falle con gracia si no se devuelve ninguna respuesta.
+3. Asignamos el valor de 'Presence' de nuestro mapa de traducción a nuestra variable de salida *<ins>'Presences'<ins>*.
 
 ![image](/images/responsebodies.PNG)
 
-### Data Action Test Tool
-The Data Action Constructor provides a test tool which allows you to test calls and validate that they are configured properly prior to deploying them. The test tool also contains an operations sequence to show you where in the RESTful process that the call is failing to allow for easier troubleshooting.
+### Herramienta de prueba de acción de datos 
+El Constructor de acciones de datos proporciona una herramienta de prueba que permite probar las llamadas y validar que están configuradas correctamente antes de desplegarlas. La herramienta de prueba también contiene una secuencia de operaciones para mostrar en qué parte del proceso RESTful está fallando la llamada y facilitar así la resolución de problemas.
 
-In the image below we can see that the test failed to apply the output transformation, indicating the translation map should be the starting point for our troubleshooting.
+En la imagen de abajo podemos ver que la prueba no pudo aplicar la transformación de salida, lo que indica que el mapa de traducción debe ser el punto de partida para nuestra solución de problemas.
 
 ![image](/images/testtool.PNG)
