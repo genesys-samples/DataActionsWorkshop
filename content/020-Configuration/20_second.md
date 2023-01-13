@@ -5,7 +5,7 @@ weight: 20
 ---
 
 ## Understand JSON Paths
-JSON responses are series of Objects and Arrays in a hierarchical structure. You start with a base object, in the below example, the base object will be "Thestore". Our example "Thestore" sells an array of different foods and silverware. If we run a query against "Thestore"'s inventory we will recieve a response containing all of the objects that "Thestore" sells and any attributes associated to these objects, such as their category (fruits, vegetables, etc.) and price.
+JSON responses are series of Objects and Arrays in a hierarchical structure. You start with a base object, in the below example, the base object will be "Thestore". Our example "Thestore" sells an array of different foods and silverware. If we run a query against "Thestore"'s inventory we will receive a response containing all of the objects that "Thestore" sells and any attributes associated to these objects, such as their category (fruits, vegetables, etc.) and price.
 
 ![image](/images/storeexample.PNG)
 
@@ -22,11 +22,11 @@ $.Thestore.food[*]
 **'[*]'** - is an array position notation, stating to return all objects within the food array, this could be changed to **'[0]'** to return only the first object within this array.
 >**Note: arrays in most languages index, or start, at 0, with 0 being the first item.**
 
-An example of a path that only returns objects that are under $2.50 - 
+An example of a path that only returns objects that are under $2.00 - 
 ```
-$.Thestore.food[?(@.price<2.50)]
+$.Thestore.food[?(@.price<2.00)]
 ```
-The only difference here is we are no longer defining an array position and have now applied a filter **' [?(@.price<2.50)] '** that looks at the price key and filters for only objects that are less than $2.50.
+The only difference here is we are no longer defining an array position and have now applied a filter **' [?(@.price<2.00)] '** that looks at the price key and filters for only objects that are less than $2.00.
 
 ## Parsing the Response Body
 
@@ -60,3 +60,12 @@ Now that we have our path, it's important to visualize the data and filter or ex
 The response here shows a single offline status, however; we know that there are multiple users in this queue and we need the presence information for all of them. The path we are using has an array position of **"[0]"**, meaning it's only returning the presence of the first entity, or user within the response. By changing this to a wildcard - **"[*]"**, we can return the presence information for all users.
 
 ![image](/images/Jsonpath2.PNG)
+
+### To Summarize what we've accomplished so far
+
+We have -
+
+1. Identified the API call within our developer center
+2. Tested this API call to ensure it provides the user presences we're searching for
+3. Used JSON Pathfinder to determine the path we need to find user presence
+4. Used JSON Path Online Evaluator to confirm the path returns all of the data we need
