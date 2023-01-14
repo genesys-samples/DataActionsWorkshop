@@ -17,7 +17,24 @@ Objects are delineated by { } (scientifically known squiggly brackets), while Ar
 
 ![image](/images/objectsarrays.PNG)
 
+### API Call Types
+**POST** - Create
+
+**GET** - Read
+
+**PUT** - Update/Replace
+
+**PATCH** - Update/Modify
+
+**Delete** - Delete
+
 ### Architect Built-in Variables
+
+Architect has a list of native variables that are referenceable within architect flows without having to invoke a Data Action to pull the data. 
+If you’re preparing to construct a data action to gather any item such as the conversation ID of a call entering a flow, check the built-in variables page to see if it is natively available!
+https://help.mypurecloud.com/articles/architect-default-variables/
+=======
 Architect has a list of native variables that are referencable within architect flows without having to invoke a Data Action to pull the data. If you’re preparing to construct a data action to gather any item such as the conversation ID of a call entering a flow, check the built-in variables page to see if it is natively available! https://help.mypurecloud.com/articles/architect-default-variables/
+
 
 ![image](/images/architectbuiltinvariables.PNG)

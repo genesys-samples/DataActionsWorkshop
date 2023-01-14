@@ -37,6 +37,8 @@ Once we have found our call, in this case **/api/v2/routing/queues/{queueId}/mem
 
 ![image](/images/queueguid.PNG)
 
+**Save this Queue GUID to a notepad for later reference.**
+
 3. Expand the call to display Presence information
 >**Some calls hide additional information by default, but can be expanded or filtered to add or remove information.**
 

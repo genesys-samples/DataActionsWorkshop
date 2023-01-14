@@ -52,4 +52,21 @@ We will now point the Transfer to ACD and Transfer to Voicemail to the queue use
 
 ![image](/images/architectfinalflow.PNG)
 
-You can test this logic by going on-queue or off queue and calling this flow.
+Lastly, we will create a call route and point it to this flow by navigating to Admin > Call Routing and selecting **"Add Call Route"**.
+
+
+You can test this logic by going on-queue or off queue and calling this flow. Provide the call route a name and set "When is this call route open?" to "Always".
+
+![image](/images/callroute1.PNG)
+
+On the right hand side, search for an available number on your platform and check the box to assign it to your call route. This is the number you will call to reach the flow you just constructed. 
+
+![image](/images/callroute2.PNG)
+
+Finally we will complete our call route by pointing it to the flow we published by scrolling down and in the "What call flow should be used?" field, search for your call flow by name.
+
+![image](/images/callroute3.PNG)
+
+After saving the call route, you're ready to test. By going on-queue and calling the number from an external phone (such as your cell phone), the call should route to you as an agent. If you go off-queue (as long as no one else in the queue is on-queue), the call should route to voicemail when dialing in.
+
+You've now successfully created and actioned off of a data action within your architect flow!
