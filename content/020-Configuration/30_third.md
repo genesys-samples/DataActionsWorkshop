@@ -38,7 +38,7 @@ When creating an OAuth token, we need to restrict or allow what types of data th
 
 Now that we have our Oauth Client configured, its time we set up the integration with Genesys CX.
 
-Navigate to Admin > Integrations, select the **"+ Integrations"** to add a new integration and search for "Genesys Cloud Data Actions" and select "Install" on this tile.
+Navigate to Admin > Integrations, search for "Genesys Cloud Data Actions" and select "Install" on this tile.
 
 ![image](/images/auth3.PNG)
 
@@ -46,6 +46,4 @@ Navigate to the Configuration tab > Credentials and select Configure. You will b
 
 ![image](/images/auth4.PNG)
 
-After saving your integration, you will need to enable it, you can do this by selecting the slider in the integration list. You can now construct Genesys Cloud Data Actions!
-
-![image](/images/integrationactive.PNG)
+After saving your integration, you can now construct Genesys Cloud Data Actions!

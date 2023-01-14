@@ -48,4 +48,3 @@ Now that our call has been configured, we will execute the call and verify the i
 >**We know we've found the correct call because we can see user presence in the response body.**
 
 ![image](/images/explorerexecute.PNG)
-

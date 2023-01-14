@@ -6,7 +6,7 @@ weight: 20
 
 ## Data Action Components
 
-Data Actions can be broken into the 4 following components
+Las acciones de datos se pueden dividir en los siguientes 4 componentes
 
 **1. Input Contracts**
 
@@ -18,17 +18,16 @@ Data Actions can be broken into the 4 following components
 
 ### Input Contracts
 Input Contracts are variables, or arrays of variables that we supply in the REST call to tell the API what specific piece of data we’re trying to invoke.
-  * Example: We’re trying to retrieve user presence data from a specific queue, we construct a QueueID Variable to input into our API call allowing us to dynamically provide a new Queue ID on every call.
+   * Example: We’re trying to retrieve user presence data from a specific queue, we construct a QueueID Variable to input into our API call allowing us to dynamically provide a new Queue ID on every call.
 
-> ***Not all API Calls require a defined Input Contract, and inputs can be statically assigned.***
+> **Not all API Calls require a defined Input Contract, and inputs can be statically assigned.**
 
 In the image below we have created an object with a QueueID input string, this input is then assigned in the request URL to allow for a dynamic Queue ID value to be assigned from an architect flow. Alternatively, if the Queue ID value does not need to change, it can be statically assigned.
 
 ![image](/images/inputcontracts.PNG)
 
 ### Output Contracts
-In an API response we may receive hundreds of lines of data, but only care about a single line.
-Output Contracts are where we define what data from the call we want to action off of.
+In an API response we may receive hundreds of lines of data, but only care about a single line. Output Contracts are where we define what data from the call we want to action off of.
   * Example: We’ve executed a call to provide us all of the queue details, we only need to see agent presence, so we set a variable of Presence to store this information at the end of the call.
 
   >**Not all API Calls require a defined Output Contract; Some calls may not actually return data that we wish to reference.**
@@ -46,15 +45,16 @@ In the image below we can see both the **Simple** and **JSON** request templates
 
 ### Response Bodies
 
-The Response Body defines what information from the call we are trying to return and can be broken into 3 components - 
+The Response Body defines what information from the call we are trying to return and can be broken into 3 components -
   * Translation Maps allow us to parse and map data from the API Response to variables.
-  * Translation Map Defaults allow us to define  default values in the event no information is returned.
+  * Translation Map Defaults allow us to define default values in the event no information is returned.
   * Success Templates allow us to map the parsed data to the output contract variables we constructed so the data can be utilized for routing, scripting, etc.
 
 In the image below we have -
-1. Constructed a translation map with a key value pair of 'Presence' and the path used to parse the API response for only presence information.
-2. Defined a translation map to apply a default value to 'Presence' of "NOT_SET" in the event that we do not return any data. This will allow the request to gracefully fail if no response is returned.
-3. Mapped the value of 'Presence' from our translation map, to our *<ins>'Presences'<ins>* output variable.
+
+Constructed a translation map with a key value pair of 'Presence' and the path used to parse the API response for only presence information.
+Defined a translation map to apply a default value to 'Presence' of "NOT_SET" in the event that we do not return any data. This will allow the request to gracefully fail if no response is returned.
+Mapped the value of 'Presence' from our translation map, to our *<ins>'Presences'<ins>* output variable.
 
 ![image](/images/responsebodies.PNG)
 
