@@ -59,7 +59,7 @@ weight = 1
 languageName = "English"
 
 [Languages.sp]
-contentDir = 'content/sp-SP'
+contentDir = 'content/es-ES'
 title = "Documentación para el tema Hugo Learn"
 weight = 2
 languageName = "Español"
