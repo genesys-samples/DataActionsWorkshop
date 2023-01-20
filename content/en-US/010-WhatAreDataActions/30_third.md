@@ -1,5 +1,5 @@
 ---
-title: Additional Definitions"
+title: Additional Definitions
 chapter: false
 weight: 30
 ---
